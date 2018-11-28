@@ -1,11 +1,11 @@
 {
-  "name": "angular-electron",
+  "name": "iot-meetings",
   "version": "5.0.0",
-  "description": "Angular 7 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "description": "ERM Online Meetings",
+  "homepage": "https://hosodientu.com/meetings",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "ERM",
+    "email": "vunb@hosodientu.vn"
   },
   "keywords": [
     "angular",
