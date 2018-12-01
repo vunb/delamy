@@ -1,5 +1,22 @@
-<div class="container">
+<header></header>
+
+<div class="container content"> <!-- container centers content on large screens -->
+  <div class="row">             <!-- responsive row has 12 columns by default -->
+    <div class="col-md-6">      <!-- uses 6 columns on medium and larger screens... -->
+      <div class="sentence" *ngFor="let sent of listSents">
+        <input [(ngModel)]="sent" type="text" />
+        <p><span>{{sent | ShuffleWords}}</span></p>
+      </div>
+    </div>
+    <div class="col-md-6">      <!-- uses 12 columns on smaller than medium screens -->
+    </div>
+  </div>
+</div>
+
+<footer></footer>
+
+<!-- <div class="container">
   <h1 class="title">
     {{ 'PAGES.HOME.TITLE' | translate }}
   </h1>
-</div>
+</div> -->

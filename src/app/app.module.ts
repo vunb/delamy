@@ -12,9 +12,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { NgArrayPipesModule, NgStringPipesModule, ShufflePipe } from 'angular-pipes';
+import {HotkeyModule} from 'angular2-hotkeys';
+
 import { ElectronService } from './providers/electron.service';
 
 import { WebviewDirective } from './directives/webview.directive';
+import { ShuffleWordsPipe } from './pipes/text/ShuffleWordsPipe';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -28,6 +32,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     HomeComponent,
+    ShuffleWordsPipe,
     WebviewDirective
   ],
   imports: [
@@ -41,9 +46,15 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: (HttpLoaderFactory),
         deps: [HttpClient]
       }
-    })
+    }),
+    HotkeyModule.forRoot(),
+    NgArrayPipesModule,
+    NgStringPipesModule
   ],
-  providers: [ElectronService],
+  providers: [
+    ElectronService,
+    ShufflePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
