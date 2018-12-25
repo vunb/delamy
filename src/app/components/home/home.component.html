@@ -5,7 +5,7 @@
     <div class="col-md-6">      <!-- uses 6 columns on medium and larger screens... -->
       <div class="sentence" *ngFor="let sent of listSents">
         <input [(ngModel)]="sent" type="text" />
-        <p><span>{{sent | ShuffleWords}}</span></p>
+        <p><span [innerHtml]="sent | ShuffleWords"></span></p>
       </div>
     </div>
     <div class="col-md-6">      <!-- uses 12 columns on smaller than medium screens -->

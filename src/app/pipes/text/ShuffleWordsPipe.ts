@@ -13,7 +13,7 @@ export class ShuffleWordsPipe implements PipeTransform {
   constructor(private shufflePipe: ShufflePipe) {}
 
   /**
-   * Tranform text
+   * Tranform random words of text
    * @param value
    * @param args
    */
@@ -21,7 +21,9 @@ export class ShuffleWordsPipe implements PipeTransform {
     if (!value) { return null; }
 
     const tokens = value.split(' ');
-    const result: string[] = this.shufflePipe.transform(tokens);
+    const spaces = ['&nbsp;', '&nbsp;', '&nbsp;', '&nbsp;', '&nbsp;'];
+
+    const result: string[] = this.shufflePipe.transform(tokens.concat(spaces));
     return result.join(' ');
   }
 

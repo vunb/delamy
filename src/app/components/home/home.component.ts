@@ -7,7 +7,7 @@ import {HotkeysService, Hotkey} from 'angular2-hotkeys';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  private listSents: string[] = [''];
+  public listSents: string[] = [''];
   constructor(private _hotkeysService: HotkeysService) {}
 
   ngOnInit() {
