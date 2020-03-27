@@ -1,7 +1,8 @@
 import 'reflect-metadata';
 import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
+import {Location, LocationStrategy, PathLocationStrategy, HashLocationStrategy} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -22,6 +23,22 @@ import { ShuffleWordsPipe } from './pipes/text/ShuffleWordsPipe';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+
+/**
+ * - Nếu là web sử dụng Path location strategy
+ * - Nếu là app (electron) sử dụng Hash location strategy
+ */
+let locationStrategy: Provider = {
+  provide: LocationStrategy,
+  useClass: PathLocationStrategy
+};
+
+if (ElectronService.IS_ELECTRON) {
+  locationStrategy = {
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  };
+}
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -53,7 +70,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     ElectronService,
-    ShufflePipe
+    ShufflePipe,
+    locationStrategy
   ],
   bootstrap: [AppComponent]
 })
